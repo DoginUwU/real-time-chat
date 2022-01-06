@@ -1,6 +1,7 @@
 import React from 'react';
+import Message from '../Message';
 
-import { Container, Profile } from './styles';
+import { Container, Profile, Messages, SendContent } from './styles';
 
 const Chat: React.FC = () => {
   return (
@@ -12,6 +13,13 @@ const Chat: React.FC = () => {
         />
         <h2>Robinho</h2>
       </Profile>
+      <Messages>
+        <Message />
+        <Message isMyMessage />
+      </Messages>
+      <SendContent>
+        <input placeholder="Digite uma mensagem" />
+      </SendContent>
     </Container>
   );
 };

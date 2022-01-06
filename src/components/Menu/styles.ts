@@ -61,6 +61,12 @@ const Search = styled.div`
 `;
 
 const Persons = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 1em;
+
   flex: 1;
 `;
 

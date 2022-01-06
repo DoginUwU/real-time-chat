@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
+import Person from '../Person';
 
 import { Container, Profile, Search, Persons } from './styles';
 
@@ -20,7 +21,9 @@ const Menu: React.FC = () => {
         <FaSearch />
         <input placeholder="Procurar" />
       </Search>
-      <Persons />
+      <Persons>
+        <Person />
+      </Persons>
     </Container>
   );
 };
