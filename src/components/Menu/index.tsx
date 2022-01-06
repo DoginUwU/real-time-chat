@@ -1,28 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import Person from '../Person';
+import { useAuth } from '../../contexts/AuthContext';
+import SearchPersons from '../SearchPersons';
 
 import { Container, Profile, Search, Persons } from './styles';
 
 const Menu: React.FC = () => {
+  const { user } = useAuth();
+  const [search, setSearch] = useState('');
+
   return (
     <Container>
       <Profile>
-        <img
-          src="https://i.pinimg.com/564x/ba/f1/c1/baf1c11f0d1fd0a510e1259f586ce003.jpg"
-          alt="Profile"
-        />
+        <img src={user.photoURL || ''} alt="Profile" />
         <div className="info">
-          <h2>Luiz</h2>
-          <p>doginuwu@gmail.com</p>
+          <h2>{user.displayName}</h2>
+          <p>{user.email}</p>
         </div>
       </Profile>
       <Search>
         <FaSearch />
-        <input placeholder="Procurar" />
+        <input
+          type="email"
+          placeholder="Procurar email"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
       </Search>
       <Persons>
-        <Person />
+        {search.length ? <SearchPersons search={search} /> : <h1>nada ;c</h1>}
       </Persons>
     </Container>
   );

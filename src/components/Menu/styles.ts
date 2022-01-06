@@ -68,6 +68,7 @@ const Persons = styled.div`
   gap: 1em;
 
   flex: 1;
+  overflow: auto;
 `;
 
 export { Container, Profile, Search, Persons };

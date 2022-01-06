@@ -1,16 +1,18 @@
 import React from 'react';
+import { SingleUser } from '../../@types/user';
 
 import { Container, InfoContent, DetailsContent } from './styles';
 
-const Person: React.FC = () => {
+interface Props {
+  user: SingleUser;
+}
+
+const Person: React.FC<Props> = ({ user }) => {
   return (
     <Container>
-      <img
-        src="https://i.pinimg.com/564x/1f/76/ef/1f76efd15f0986f50ee7334c1ae3049a.jpg"
-        alt="Name"
-      />
+      <img src={`${user.photoURL}`} alt={`${user.name}`} />
       <InfoContent>
-        <h2>Robinho</h2>
+        <h2>{user.name}</h2>
         <p>Oii, como você tá?</p>
       </InfoContent>
       <DetailsContent>

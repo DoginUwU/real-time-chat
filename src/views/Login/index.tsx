@@ -1,11 +1,17 @@
 import React from 'react';
 import { FaGoogle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 import { Container, Card } from './styles';
 
 const Login: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+  const { signIn } = useAuth();
+
+  const handleSignIn = async () => {
+    await signIn();
+    navigate('/');
   };
 
   return (
@@ -13,11 +19,9 @@ const Login: React.FC = () => {
       <Card>
         <h1>Iniciar sessão</h1>
         <p>Faça login com sua conta google para começar</p>
-        <form onSubmit={handleSubmit}>
-          <button type="submit">
-            <FaGoogle /> Login com Google
-          </button>
-        </form>
+        <button type="submit" onClick={handleSignIn}>
+          <FaGoogle /> Login com Google
+        </button>
       </Card>
     </Container>
   );
